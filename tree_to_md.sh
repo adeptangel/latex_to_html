@@ -15,8 +15,9 @@ traverse_dir() {
             # Assume the file is LaTeX if it ends in .tex
             if basename "$file" | grep -q "\.tex$"
             then
-                name="$(basename -s .md "$file")"
-                # TODO: tex command(s) here
+                # name="$(basename -s .tex "$file")"
+                name="${file%.*}"
+                latexml "$file" > "$name".html
             fi
         fi
     done
